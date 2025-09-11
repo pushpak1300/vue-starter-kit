@@ -2,7 +2,8 @@
 import InputError from '@/components/InputError.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
-import { editPassword as passwordEdit, updatePassword as passwordUpdate } from '@/routes/password';
+import { edit as passwordEdit } from '@/routes/password';
+import { update as userPasswordUpdate } from '@/routes/user-password';
 import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -32,7 +33,7 @@ const currentPasswordInput = ref<HTMLInputElement | null>(null);
                 <HeadingSmall title="Update password" description="Ensure your account is using a long, random password to stay secure" />
 
                 <Form
-                    :action="passwordUpdate()"
+                    :action="userPasswordUpdate()"
                     :options="{
                         preserveScroll: true,
                     }"

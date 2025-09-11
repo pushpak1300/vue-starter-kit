@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Form, Head, Link, usePage } from '@inertiajs/vue3';
-import { edit as profileEdit, update as profileUpdate } from '@/routes/profile';
+import { edit as profileEdit } from '@/routes/profile';
+import { update as userProfileUpdate } from '@/routes/user-profile-information';
 import { send as verificationSend } from '@/routes/verification';
 
 import DeleteUser from '@/components/DeleteUser.vue';
@@ -39,7 +40,7 @@ const user = page.props.auth.user;
             <div class="flex flex-col space-y-6">
                 <HeadingSmall title="Profile information" description="Update your name and email address" />
 
-                <Form :action="profileUpdate()" class="space-y-6" v-slot="{ errors, processing, recentlySuccessful }">
+                <Form :action="userProfileUpdate()" class="space-y-6" v-slot="{ errors, processing, recentlySuccessful }">
                     <div class="grid gap-2">
                         <Label for="name">Name</Label>
                         <Input
