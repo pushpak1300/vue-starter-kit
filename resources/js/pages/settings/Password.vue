@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import PasswordController from '@/actions/App/Http/Controllers/Settings/PasswordController';
 import InputError from '@/components/InputError.vue';
 import AppLayout from '@/layouts/AppLayout.vue';
 import SettingsLayout from '@/layouts/settings/Layout.vue';
-import { edit } from '@/routes/password';
+import { edit as passwordEdit } from '@/routes/password';
+import { update as userPasswordUpdate } from '@/routes/user-password';
 import { Form, Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -16,7 +16,7 @@ import { type BreadcrumbItem } from '@/types';
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         title: 'Password settings',
-        href: edit().url,
+        href: passwordEdit(),
     },
 ];
 
@@ -33,7 +33,7 @@ const currentPasswordInput = ref<HTMLInputElement | null>(null);
                 <HeadingSmall title="Update password" description="Ensure your account is using a long, random password to stay secure" />
 
                 <Form
-                    v-bind="PasswordController.update.form()"
+                    :action="userPasswordUpdate()"
                     :options="{
                         preserveScroll: true,
                     }"
